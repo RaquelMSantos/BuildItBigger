@@ -18,12 +18,12 @@ import br.com.rmso.jokesandroid.JokesActivity;
  * Created by Raquel on 23/09/2018.
  */
 
-public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
+public class EndpointsAsyncTask extends AsyncTask<MainActivityFragment, Void, String> {
     private static MyApi myApiService = null;
-    private Context context;
+    private MainActivityFragment mainActivityFragment;
 
     @Override
-    protected String doInBackground(Context... params) {
+    protected String doInBackground(MainActivityFragment... params) {
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -42,7 +42,7 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
             myApiService = builder.build();
         }
 
-        context = params[0];
+       // context = params[0];
 //        String name = params[0].second;
 
         try {
@@ -57,9 +57,12 @@ public class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     protected void onPostExecute(String result) {
 //        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(context, JokesActivity.class);
-        intent.putExtra("joke", result);
-        context.startActivity(intent);
+//        Intent intent = new Intent(context, JokesActivity.class);
+//        intent.putExtra("joke", result);
+//        context.startActivity(intent);
+
+        mainActivityFragment.load = result;
+        mainActivityFragment.showJokesActivity();
 
     }
 }
