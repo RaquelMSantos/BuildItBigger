@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JokesAndroid</string>
+    <string name="fail_joke">Joke fail</string>
 </resources>

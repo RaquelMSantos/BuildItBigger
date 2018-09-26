@@ -22,6 +22,8 @@ public class JokesActivity extends AppCompatActivity {
 
         if (joke != null){
             mJokeTextView.setText(joke);
+        }else {
+            mJokeTextView.setText(R.string.fail_joke);
         }
     }
 }
