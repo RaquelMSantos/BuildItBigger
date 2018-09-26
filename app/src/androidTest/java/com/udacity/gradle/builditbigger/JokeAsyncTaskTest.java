@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -21,9 +22,9 @@ public class JokeAsyncTaskTest {
     public ActivityTestRule<MainActivity> activityActivityTestRule = new ActivityTestRule<>(
             MainActivity.class);
 
-
     @Test
     public void returnJokeTest(){
+        onView(withId(R.id.button)).check(matches(isDisplayed()));
         onView(withId(R.id.button)).perform(click());
         onView(withId(R.id.tv_joke)).check(matches(not(withText(""))));
     }
